@@ -1,0 +1,14 @@
+/*
+Author: Jakob Orel
+1-bit Full Adder: out = a HA b HA c
+                  carry = carry1 Or carry2
+*/
+
+CHIP FA{
+IN a, b, c;
+OUT out, carry;
+PARTS:
+HA(a=a, b=b, out= o1, carry=carry1);
+HA(a=o1, b=c, out=out, carry=carry2);
+Or(a=carry1, b=carry2, out=carry);
+}

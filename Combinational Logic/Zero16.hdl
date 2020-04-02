@@ -1,0 +1,15 @@
+/*
+Author: Jakob Orel
+16 bit zero gate: if z = 1, out= 0
+                  if z = 0, out= in
+*/
+
+CHIP Zero16{
+IN in[16], z;
+OUT out[16];
+PARTS:
+Not16(in=in[0..15], out=notIn);
+And16(a= in[0..15], b=notIn, out=zero);
+
+Mux16(a= in[0..15], b=zero, sel=z, out=out[0..15]);
+}

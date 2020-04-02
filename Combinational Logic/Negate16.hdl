@@ -1,0 +1,15 @@
+/*
+Author: Jakob Orel
+16-bit Negate: in Mux notIn
+If n=1, out=notIn
+If n=0, out=in
+*/
+
+CHIP Negate16{
+IN in[16], n;
+OUT out[16];
+PARTS:
+Not16(in=in[0..15], out=notIn);
+
+Mux16(a=in[0..15], b=notIn, sel=n, out=out[0..15]);
+}
