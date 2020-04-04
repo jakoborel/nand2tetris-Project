@@ -1,0 +1,14 @@
+/*
+Author: Jakob Orel
+
+1-bit Half Adder: out= aXorb
+                  carry= aAndb
+*/
+
+CHIP HA{
+IN a, b;
+OUT out, carry;
+PARTS:
+Xor(a=a, b=b, out=out);
+And(a=a, b=b, out=carry);
+}

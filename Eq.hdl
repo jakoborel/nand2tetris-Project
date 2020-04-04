@@ -1,0 +1,15 @@
+/*
+Author: Jakob Orel
+Equivalence gate: out = aAndb Or (notA)And(notB)
+*/
+
+CHIP Eq{
+IN a, b;
+OUT out;
+PARTS:
+And(a=a, b=b, out=o1);
+Not(in=a, out=notA);
+Not(in=b, out=notB);
+And(a=notA, b=notB, out=o2);
+Or(a=o1, b=o2, out=out);
+}
