@@ -13,7 +13,7 @@ IN in[16], inc, load, reset;
 OUT out[16];
 PARTS:
 //inc
-Add16(a=outLoop, b=1, out=addOne);
+Add16(a=outLoop, b[0]=true, out=addOne);
 Mux16(a=outLoop, b=addOne, sel=inc, out=incOut);
 
 //load
