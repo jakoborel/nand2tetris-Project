@@ -1,0 +1,28 @@
+/*
+Author: Jakob Orel
+
+PC (counter): If reset(t-1) then out(t)=0
+                else if load(t-1) then out(t)=in(t-1)
+                    else if inc(t-1) then out(t)=out(t-1)+1
+                        else out(t)=out(t-1)
+
+*/
+
+CHIP PC{
+IN in[16], inc, load, reset;
+OUT out[16];
+PARTS:
+//inc
+Add16(a=outLoop, b=1, out=addOne);
+Mux16(a=outLoop, b=addOne, sel=inc, out=incOut);
+
+//load
+Mux16(a=incOut, b=in, sel=load, out=loadOut);
+
+//reset
+Zero16(in=loadOut, z=reset, out=resetOut);
+
+//DFF Could we just use Register??
+DFF16(in=resetOut, out=out, out=outLoop);
+//Register(in=resetOut, load=true, out=out, out=outLoop);
+}

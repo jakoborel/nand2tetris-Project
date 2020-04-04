@@ -1,0 +1,24 @@
+/*
+Author: Jakob Orel
+
+RAM64:
+16384 Registers- 16-bit wide
+    out=(t)=RAM[address(t)](t)
+    If load(t-1) then
+        RAM[address(t-1)](t)=in(t-1)
+*/
+
+CHIP RAM4K{
+IN in[16], address[14], load;
+OUT out[16];
+PARTS:
+DMux8Way(in=load, sel=address[12..13], a=a, b=b, c=c, d=d, e=e, f=f, g=g, h=h);
+
+RAM4K(in= in, address= address[0..11], load=a, out=o1);
+RAM4K(in= in, address= address[0..11], load=b, out=o2);
+RAM4K(in= in, address= address[0..11], load=c, out=o3);
+RAM4K(in= in, address= address[0..11], load=d, out=o4);
+
+Mux8Way16(a=o1, b=o2, c=o3, d=o4, sel=address[12..13], out=out);
+
+}

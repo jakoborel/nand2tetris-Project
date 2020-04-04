@@ -1,0 +1,14 @@
+/*
+Author: Jakob Orel
+4-bit Adder: HA on first bit, FA on rest, Carry is passed on until last bit
+*/
+
+CHIP Add4{
+IN a[4],b[4];
+OUT out[4], carry;
+PARTS:
+HA(a=a[0],b=b[0], out=out[0], carry=c1);
+FA(a=a[1],b=b[1], c=c1, out=out[1], carry=c2);
+FA(a=a[2],b=b[2], c=c2, out=out[2], carry=c3);
+FA(a=a[3],b=b[3], c=c3, out=out[3], carry=carry);
+}

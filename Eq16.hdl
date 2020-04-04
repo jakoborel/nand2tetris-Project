@@ -1,0 +1,15 @@
+/*
+Author: Jakob Orel
+16-bit Eq gate: aAnd16b Or16 (Not16a)And16(Not16b)
+*/
+
+CHIP Eq16{
+IN a[16], b[16];
+OUT out[16];
+PARTS:
+And16(a=a[0..15], b=b[0..15], out=o1);
+Not16(in= a[0..15], out= notA);
+Not16(in= b[0..15], out= notB);
+And16(a= notA, b= notB, out=o2);
+Or16(a=o1, b=o2, out=out[0..15]);
+}

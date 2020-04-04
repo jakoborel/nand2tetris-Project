@@ -1,0 +1,21 @@
+/*
+Author: Jakob Orel
+
+DMux8Way Gate: if sel=000, out=a,
+                  sel=111, out=h
+*/
+
+CHIP DMux8Way{
+IN in, sel[3];
+OUT a, b, c, d, e, f, g, h;
+PARTS:
+DMux(in=in, sel=sel[2], a=firstOut1, b=firstOut2);
+
+DMux(in=firstOut1, sel=sel[1], a=secondOut1, b=secondOut2);
+DMux(in=firstOut2, sel=sel[1], a=secondOut3, b=secondOut4);
+
+DMux(in=secondOut1, sel=sel[0], a=a, b=b);
+DMux(in=secondOut2, sel=sel[0], a=c, b=d);
+DMux(in=secondOut3, sel=sel[0], a=e, b=f);
+DMux(in=secondOut4, sel=sel[0], a=g, b=h);
+}

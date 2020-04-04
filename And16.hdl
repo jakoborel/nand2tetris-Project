@@ -1,0 +1,12 @@
+/*
+Author: Jakob Orel
+16-bit And gate: (a[16]Nand16b[16])Nand16(a[16]Nand16b[16])
+*/
+
+CHIP And16{
+IN a[16], b[16];
+OUT out[16];
+PARTS:
+Nand16(a= a[0..15], b=b[0..15], out=o1);
+Nand16(a= o1, b=o1, out=out);
+}
