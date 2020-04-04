@@ -3,7 +3,7 @@ Author: Jakob Orel
 
 Register: If load(t-1) then out(t)=in(t-1),
                 else: out(t)=out(t-1);
-
+Uses w-single-bit registers to create w-bit wide Register
                 Same as Bit but for 16-bit input/output
 */
 

@@ -22,7 +22,6 @@ Mux16(a=incOut, b=in, sel=load, out=loadOut);
 //reset
 Zero16(in=loadOut, z=reset, out=resetOut);
 
-//DFF Could we just use Register??
+//DFF
 DFF16(in=resetOut, out=out, out=outLoop);
-//Register(in=resetOut, load=true, out=out, out=outLoop);
 }

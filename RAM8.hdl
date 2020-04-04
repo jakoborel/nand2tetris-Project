@@ -12,8 +12,10 @@ CHIP RAM8{
 IN in[16], address[3], load;
 OUT out[16];
 PARTS:
+//One bit DMux to determine which register receives load bit
 DMux8Way(in=load, sel=address, a=a, b=b, c=c, d=d, e=e, f=f, g=g, h=h);
 
+//Load the registers
 Register(in= in, load=a, out=o1);
 Register(in= in, load=b, out=o2);
 Register(in= in, load=c, out=o3);
@@ -23,6 +25,7 @@ Register(in= in, load=f, out=o6);
 Register(in= in, load=g, out=o7);
 Register(in= in, load=h, out=o8);
 
+//Get the output from the correct address
 Mux8Way16(a=o1, b=o2, c=o3, d=o4, e=o5, f=o6, g=o7, h=o8, sel=address, out=out);
 
 }

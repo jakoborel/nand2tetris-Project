@@ -1,7 +1,7 @@
 /*
 Author: Jakob Orel
 
-DFF16:
+DFF16: 16bit Data Flip Flop
 */
 
 CHIP DFF16 {
